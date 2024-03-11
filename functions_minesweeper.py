@@ -163,16 +163,20 @@ def play_turn(board, row, column):
     return board, False
 
 def check_win(board):
-    '''
-    This function determines if the player has won the game, which returns as True.
-    This only occurs when all positions that do not contain a mine have been selected.
+    """
+    *This function determines whether the player has won the game or not*
+    Arguments
+    ---------
+        board - a list representing the board
 
-    Input:
-         board = list representing the board
-
-    Output:
-    a bool representing if the game has been won (True) or has not been won (False).
-    '''
+    Returns
+    -------
+        bool - a bool value where if the game has been won (True) or has not been won (False)
+    Notes
+    -------
+        (precondition 1) if the function returns False, it means the game has not been won yet.
+        (postcondition 1) To ensure this, make sure that the all non-mine positions have been selected
+    """
     for position in board:
         # If any cell is not a mine and is still hidden ('O'), return False
         if position != "O" and position != "#":
