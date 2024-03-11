@@ -33,10 +33,11 @@ def display_board(board):
         (postcondition 1) Must print out the 5X5 board like this, ['O','O','O','O','O'], but multiply this row 5 times
     """
     updated_board = board.copy()
+    # This for loop replaces the already inserted 'X's and hides it as a 'O'
     for i in range(len(board)):
         if board[i] == 'X':
             updated_board[i] = 'O'
-
+    # This for loop prints out the list and divides it into 5 rows
     for i in range(0, len(board), 5):
         print(updated_board[i:i + 5])
     return
@@ -181,7 +182,7 @@ def check_win(board):
         # If any cell is not a mine and is still hidden ('O'), return False
         if position != "O" and position != "#":
             return False
-    # If all non-mine positions have been selected       
+    # If all non-mine positions have been selected, without 'X' being selected,       
     return True
 
 def play_game(position):
@@ -205,10 +206,10 @@ def play_game(position):
     display_board(board)
 
     while True:
-        user = input("Enter row and column (e.g. '4 3'): ")
+        user = input("Enter row and column (make sure to separate the numbers by a space, (e.g. '4 3')): ")
         row, column = map(int, user.split()) # split function is used to separate the known rows and columns
 
-        updated_board, mine_selected = play_turn(board, row, column) # Calls the play_turn function
+        updated_board, mine_selected = play_turn(board, row, column) # Player's turn
 
         print("Updated board:")
         display_board(updated_board) # Displays updated board everytime a turn happens
